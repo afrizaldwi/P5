@@ -1,0 +1,360 @@
+:root {
+	--primary: #ffd93d;
+	--secondary: #ff8400;
+	--third: #4f200d;
+	--krem: #ffefd8;
+	--black: #010101;
+	--white: #eaeaea;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	user-select: none;
+	color: var(--black);
+}
+
+body {
+	background-color: var(--white);
+}
+section {
+	padding: 1rem;
+}
+
+nav {
+	position: sticky;
+	top: 0;
+	z-index: 999;
+	background-color: var(--primary);
+	width: 100%;
+	padding: 0.125rem 1rem;
+}
+
+.nav-brand {
+	display: flex;
+	align-items: center;
+	text-transform: uppercase;
+}
+
+.navbar-collapse {
+	top: 1.5rem;
+	right: 1.5rem;
+	color: var(--black);
+	position: absolute;
+}
+
+.navbar-nav {
+	display: none;
+}
+
+.toggle {
+	display: block;
+}
+
+.navbar-item {
+	width: 100%;
+	padding: 0.5rem 1rem;
+	margin: 1rem 0;
+	border-radius: 0.5rem;
+}
+
+.navbar-link {
+	display: block;
+	color: var(--black);
+}
+
+.navbar-item.active,
+.navbar-item:hover {
+	background-color: var(--secondary);
+}
+
+.home {
+	width: 100%;
+	height: 100vh;
+	background-image: url(./assets/img/image.jpg);
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+}
+
+.home-group {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.home-text {
+	color: var(--primary);
+	font-size: 1rem;
+	text-align: center;
+	text-transform: capitalize;
+}
+
+.prospek-kerja-group {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.prospek-kerja {
+	width: 90%;
+	height: 250px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.prospek-kerja img,
+.prospek-kerja p {
+	border-radius: 1rem;
+}
+
+.prospek-style {
+	text-transform: capitalize;
+	font-weight: 600;
+	font-size: 1.3rem;
+	color: var(--white);
+	text-align: center;
+}
+
+.prospek-kerja p {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #000000be;
+	opacity: 0;
+	transition: all 0.35s ease-in-out 0.1s;
+}
+
+.prospek-kerja:hover p {
+	opacity: 1;
+}
+
+.img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	background-position: center;
+}
+
+/* carousel */
+.wrapper {
+	margin: auto;
+	width: 100%;
+	height: 14rem;
+	overflow: hidden;
+	border-radius: 1rem;
+	position: relative;
+	margin-bottom: 1rem;
+}
+
+.slide,
+.about-slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	visibility: hidden;
+	transition: all ease-in-out 0.5s;
+}
+
+.slide.active,
+.about-slide.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.slide-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.section-arrow {
+	position: absolute;
+	z-index: 10;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.btn {
+	padding: 0.5rem;
+	border: none;
+	background-color: #eaeaea50;
+	color: #eaeaea;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: all ease-in-out 300ms;
+}
+
+.btn:hover {
+	background-color: #eaeaea;
+	color: #1f1f1f;
+}
+/* === === === === === === */
+
+/* contact */
+.contact-info-box {
+	display: flex;
+	flex-direction: column;
+}
+
+.contact-info-item {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 1rem 0;
+	width: 100%;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	background-color: var(--primary);
+	box-shadow: 0 0 0.5rem var(--krem);
+}
+
+.contact-info-item p {
+	font-size: 1rem;
+}
+
+.contact-info-item img {
+	width: 1rem;
+	height: 1rem;
+}
+
+form {
+	width: 100%;
+	display: flex;
+	gap: 1rem;
+	flex-direction: column;
+}
+
+form .form-input,
+textarea {
+	width: 100%;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	background-color: var(--krem);
+	border: none;
+}
+
+.form-btn {
+	border: none;
+	border-radius: 1rem;
+	font-size: 1rem;
+	font-weight: 600;
+	text-transform: capitalize;
+	padding: 1rem 1.5rem;
+	background: linear-gradient(to left, var(--primary), var(--secondary));
+	box-shadow: inset 0.5rem 0.5rem 0.5rem #00000025;
+	cursor: pointer;
+}
+
+.form-btn:hover {
+	filter: brightness(0.95);
+}
+/* === === === === === === */
+
+/* fppter */
+footer {
+	background-color: var(--third);
+	color: var(--krem);
+	text-align: center;
+	width: 100%;
+	padding: 1.5rem 0;
+}
+/* === === === === === === */
+
+.text-center {
+	text-align: center;
+	padding: 1rem 0;
+	text-transform: capitalize;
+}
+
+.paragraph-text {
+	text-align: justify;
+	text-indent: 2rem;
+}
+
+@media (min-width: 576px) {
+	.prospek-kerja {
+		width: 40%;
+		margin: 1rem;
+	}
+	.wrapper {
+		width: 25rem;
+	}
+}
+
+@media (min-width: 992px) {
+	section {
+		padding: 0 4rem;
+	}
+	p {
+		font-size: 1.1rem;
+	}
+	/* navbar */
+	nav {
+		display: flex;
+		justify-content: space-between;
+		padding: 0 4rem;
+	}
+	.navbar-nav {
+		display: flex;
+		align-items: center;
+		gap: 0 1rem;
+	}
+	.navbar-item {
+		padding: 1rem;
+		margin: 0;
+		border-radius: 0;
+	}
+	.navbar-collapse {
+		display: none;
+	}
+	/* home */
+	.home-group {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	.home-group img {
+		width: 300px;
+	}
+	.home-text {
+		font-size: 1.5rem;
+	}
+	.prospek-kerja {
+		width: 25%;
+	}
+	/* contact */
+	#contact {
+		display: flex;
+		gap: 1rem;
+	}
+	.contact-info-item {
+		margin: 0 0 1rem 0;
+	}
+	.contact-info {
+		width: 40%;
+	}
+	.contact-message {
+		width: 60%;
+	}
+}
