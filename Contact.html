@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 		<!-- font awesome -->
 		<script
 			src="https://kit.fontawesome.com/8b42185fc0.js"
@@ -15,7 +16,7 @@
 		<nav>
 			<div class="nav-brand">
 				<img src="./assets/img/logo-tkj.png" alt="brand" width="62" />
-				<h1>tkj</h1>
+				<a href="index.html">tkj</a>
 			</div>
 			<a href="#" class="navbar-collapse" id="navbarCollapse">
 				<i class="fa-solid fa-bars fa-lg"></i>
@@ -37,18 +38,18 @@
 				<h2 class="text-center">Contact</h2>
 				<div class="contact-info-box">
 					<div class="contact-info-item">
-						<img src="./assets/icon/ic_home.svg" alt="addres" />
+						<i class="fa-sharp fa-solid fa-house"></i>
 						<a
 							href="https://www.google.com/maps/uv?pb=!1s0x2e7801a865e11481%3A0xe785e336f1e142!3m1!7e115!4s%2Fmaps%2Fplace%2FSMKN%2B1%2BCERME%2F%40-7.2336336%2C112.5614894%2C3a%2C75y%2C234.98h%2C90t%2Fdata%3D*213m4*211e1*213m2*211srntcocYlw7e4Lvr8K5n9wA*212e0*214m2*213m1*211s0x2e7801a865e11481%3A0xe785e336f1e142%3Fsa%3DX!5sSMKN%201%20CERME%20-%20Penelusuran%20Google!15sCgIgAQ&imagekey=!1e2!2srntcocYlw7e4Lvr8K5n9wA&hl=id&sa=X&ved=2ahUKEwiuxt3gorX_AhVuwjgGHYFpBmEQpx96BAgpEAw"
 							>SMKN 1 Cerme</a
 						>
 					</div>
 					<div class="contact-info-item">
-						<i class="fa-brands fa-whatsapp" style="color: #004dd1"></i>
+						<i class="fab fa-whatsapp fa-lg"></i>
 						<a href="https://wa.me/6287112494125">+62 871 1249 4125</a>
 					</div>
 					<div class="contact-info-item">
-						<img src="./assets/icon/ic_email.svg" alt="addres" />
+						<i class="fa-regular fa-envelope fa-lg"></i>
 						<a href="mailto:xitkj1@smkn1cerme.sch.id"
 							>xitkj1@smkn1cerme.sch.id</a
 						>
@@ -57,12 +58,39 @@
 			</div>
 			<div class="contact-message">
 				<h2 class="text-center">Send your message</h2>
-				<form>
-					<input type="text" class="form-input" placeholder="Nama" required />
-					<input type="email" class="form-input" placeholder="Email Address" />
-					<textarea rows="5" placeholder="Your Message"></textarea>
+				<div class="alert d-none" id="alert" role="alert">
+					<p><strong>Terima kasih! </strong>Pesan anda sudah kami terima</p>
+					<i class="fa-solid fa-xmark fa-lg" id="exit"></i>
+				</div>
+				<div class="alert warning d-none" id="alert" role="alert">
+					<p><strong>Maaf! </strong>Pesan anda tidak berhasil dikirim</p>
+					<i class="fa-solid fa-xmark fa-lg" id="exit"></i>
+				</div>
+				<form name="contact-form">
+					<input
+						name="name"
+						type="text"
+						class="form-input"
+						placeholder="Nama"
+						required />
+					<input
+						name="email"
+						type="email"
+						class="form-input"
+						placeholder="Email Address" />
+					<textarea
+						name="message"
+						rows="5"
+						placeholder="Your Message"></textarea>
 					<div class="text-center">
-						<input type="submit" value="send message" class="form-btn" />
+						<input
+							type="submit"
+							value="send message"
+							class="form-btn send-btn"
+							id="btnKirim" />
+						<button class="form-btn disable d-none" id="btnLoading" disabled>
+							<i class="fa-solid fa-spinner fa-spin"></i>
+						</button>
 					</div>
 				</form>
 			</div>
@@ -72,5 +100,41 @@
 		</footer>
 
 		<script src="script.js"></script>
+
+		<script>
+			const scriptURL =
+				"https://script.google.com/macros/s/AKfycbzkr1IaURMGpfMMTzxsX_DJFwNmeUHUdi75t2TnsXrla5TkedcfC5NCBRioBOQdwalU/exec";
+			const form = document.forms["contact-form"];
+
+			const btnKirim = document.getElementById("btnKirim");
+			const btnLoading = document.getElementById("btnLoading");
+			const alert = document.getElementById("alert");
+			const alertWarning = document.querySelector(".warning");
+
+			form.addEventListener("submit", (e) => {
+				e.preventDefault();
+
+				btnKirim.classList.toggle("d-none");
+				btnLoading.classList.toggle("d-none");
+				fetch(scriptURL, { method: "POST", body: new FormData(form) })
+					.then((response) => {
+						alert.classList.toggle("d-none");
+						btnKirim.classList.toggle("d-none");
+						btnLoading.classList.toggle("d-none");
+
+						form.reset();
+						console.log("Success!", response);
+					})
+					.catch((error) => {
+						alertWarning.classList.toggle("d-none");
+						console.error("Error!", error.message);
+					});
+			});
+
+			const exit = document.getElementById("exit");
+			exit.addEventListener("click", () => {
+				alert.classList.add("d-none");
+			});
+		</script>
 	</body>
 </html>
