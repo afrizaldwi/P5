@@ -62,4 +62,4 @@ setInterval(() => {
 	slideIndex -= 1;
 	showSlide(aboutSlideIndex);
 	showSlide(slideIndex);
-}, 4000);
+}, 10000);

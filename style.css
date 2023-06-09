@@ -390,4 +390,8 @@ footer {
 	.contact-message {
 		width: 60%;
 	}
+	#contact ~ footer {
+		position: absolute;
+		bottom: 0;
+	}
 }
